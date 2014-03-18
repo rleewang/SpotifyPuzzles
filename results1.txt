@@ -1,0 +1,15 @@
+19_2000 has 198189 plays & 17983 predicted plays with quality of 11.0209
+clint_eastwood has 210492 plays & 39563 predicted plays with quality of 5.32043
+tomorrow_comes_today has 189518 plays & 65938 predicted plays with quality of 2.87418
+re_hash has 197812 plays & 197812 predicted plays with quality of 1
+rock_the_house has 18782 plays & 19782 predicted plays with quality of 0.949449
+sound_check has 19727 plays & 24727 predicted plays with quality of 0.797792
+5_4 has 78906 plays & 98906 predicted plays with quality of 0.797788
+new_genious has 39453 plays & 49453 predicted plays with quality of 0.797788
+man_research has 26302 plays & 32969 predicted plays with quality of 0.79778
+double_bass has 17535 plays & 21980 predicted plays with quality of 0.797771
+m1_a1 has 10521 plays & 13188 predicted plays with quality of 0.797771
+punk has 22544 plays & 28259 predicted plays with quality of 0.797764
+latin_simone has 13151 plays & 16485 predicted plays with quality of 0.797756
+slow_country has 11272 plays & 14130 predicted plays with quality of 0.797735
+starshine has 12139 plays & 15217 predicted plays with quality of 0.797726

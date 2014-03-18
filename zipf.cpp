@@ -13,6 +13,7 @@ struct Song {
 };
 
 bool compareQuality(Song* lhs, Song* rhs) {
+  //Sort by descending order
   return (lhs->quality > rhs->quality);
 }
 
@@ -100,10 +101,29 @@ int main() {
   Song* song;
 
   //Calculate predicted plays via zipf's law now that songs have been sorted by highest play frequency
+
+  /*
+    Depending on the order in which the calculations are performed, 
+    even if it ends up being the same expression mathematically, 
+    due to machine precision the ordering of the tracks will differ 
+    except for the top couple of tracks. This really only matters for 
+    qualities that are pretty close to each other such that a small 
+    difference will result in a different ordering
+   */
   for(long i = 0; i < numSongs; i++) {
     song = songs[i];
-    song->predictedPlays = (long ) ceil((double) firstPlays / song->trackNumber);
-    song->quality = (double) song->actualPlays / (double) song->predictedPlays;
+    //Attempt 1 w/ regular division
+    song->predictedPlays = firstPlays / song->trackNumber;
+    //Attempt 2 w/ rounding up of predicted plays
+    //song->predictedPlays = (long ) ceil((double) firstPlays / song->trackNumber);
+    
+    //Seperate calculations
+    //song->quality = (double) song->actualPlays / (double) song->predictedPlays;
+
+    //One single expression for the quality of a song q_i = f_i/z_i where z_i = f_0 / track#
+    song->quality = ((double) song->actualPlays / (double) firstPlays) * song->trackNumber;
+    
+    //Lots of answers have this as a solution online, have no idea why
     //song->quality = song->actualPlays * song->trackNumber;
   }
   
@@ -112,11 +132,12 @@ int main() {
 
   //Print out selected # of top quality songs
   for(long i = 0; i < numToSelect; i++) {
-    //std::cout << ptrSong->name << " " << ptrSong->quality << std::endl;
     std::cout << songs[i]->name << std::endl;
-    //std::cout << songs[i]->name << " has " << songs[i]->actualPlays << " plays & "
-    //	      << songs[i]->predictedPlays << " predicted plays with quality of "
-    //	      << songs[i]->quality << std::endl;
+
+    //Debug statements
+    // std::cout << songs[i]->name << " has " << songs[i]->actualPlays << " plays & "
+    // 	      << songs[i]->predictedPlays << " predicted plays with quality of "
+    // 	      << songs[i]->quality << std::endl;
   }
 
   return 0;
